@@ -7,7 +7,8 @@
 
 
 ### Requests
-* `/` - Welcome
+* `/`:
+    Welcome
 * `/reporisk/repo-src/num-or-repos-to-process`:
     * repo-src = repositories location (currently only github supported)
     * num-or-repos-to-process = amount of trending repos to process (between 1 and 25)
