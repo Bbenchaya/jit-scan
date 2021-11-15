@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  jit-scan:
+    container_name: jit-scan
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "5000:5000"
