@@ -24,7 +24,7 @@ def welcome():
 @app.route('/reporisk/<repotype>/<int:repostoscan>')
 def process_request(repotype, repostoscan):
     res = verify_input(repotype, repostoscan)
-    if res == "":
+    if res == {}:
         fetcher = GithubRepositoryHandler("Python")
         unused_risk_calculator = UnusedReqRiskCalculator()
         try:
