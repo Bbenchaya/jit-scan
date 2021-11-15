@@ -14,7 +14,7 @@ def verify_input(repo_type, repos_to_scan):
     if repo_type.lower() != "github":
         res["repo-src-error"] = "Currently only github is supported"
 
-    return jsonify(res)
+    return res
 
 app = Flask(__name__)
 @app.route('/')
@@ -36,7 +36,7 @@ def process_request(repotype, repostoscan):
         print(json_response)
         return json_response
     else:
-        return res
+        return jsonify(res)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
