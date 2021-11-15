@@ -1,7 +1,7 @@
 import concurrent
 from concurrent.futures import ThreadPoolExecutor
 
-from flask import jsonify
+from flask import jsonify, Response
 from git import Repo, List
 from gtrending import fetch_repos
 
@@ -53,9 +53,10 @@ class GithubRepositoryHandler(RepositoryHandler):
             repositoriy_data['risk'] = risk
         return repositoriy_data
 
-    def evaluate_repos(self, limit, repositories, risk_calculator: RiskCalculator) -> dict:
+    def evaluate_repos(self, limit, repositories, risk_calculator: RiskCalculator) -> Response:
         repository_list = {}
         for index, repo in zip(range(limit), repositories):
+            print(f'processing repo {repo["name"]}')
             risk = risk_calculator.calculate_risk(repo, repo["name"])
             repository_list[repo["name"]] = self.create_repo_response(repo, risk)
             self.print_repo_details(repo, risk)

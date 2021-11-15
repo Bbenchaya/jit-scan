@@ -31,6 +31,7 @@ def process_request(repotype, repostoscan):
             repos = fetcher.fetch_all_repositories(repostoscan)
             json_response = fetcher.evaluate_repos(repostoscan, repos, unused_risk_calculator)
         finally:
+            print("cleaning up tmp dir")
             shutil.rmtree("../repositories_to_inspect/")
         print(json_response)
         return json_response

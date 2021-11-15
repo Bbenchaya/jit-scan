@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   jit-scan:
-    container_name: jit-scan
+    container_name: repo-scanner
     build:
       context: .
       dockerfile: Dockerfile
